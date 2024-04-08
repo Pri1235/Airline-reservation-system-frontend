@@ -1,0 +1,48 @@
+<div class="container">
+  <h3>Create Airport</h3>
+    <form #apForm="ngForm" (ngSubmit)="onSubmit(apForm)">
+        <div class="mb-3">
+          <label for="airport_id" class="form-label">Airport ID</label>
+          <input type="number" class="form-control" id="airport_id" placeholder="Enter Airport ID" [(ngModel)]="es.selectedAirport.airport_id" name="airport_id">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Airport Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter Airport Name" [(ngModel)]="es.selectedAirport.name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="code" class="form-label">Airport Code</label>
+          <input type="text" class="form-control" id="code" placeholder="Enter Airport Code eg.(BOM)" [(ngModel)]="es.selectedAirport.code" name="code">
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Airport Location</label>
+          <input type="text" class="form-control" id="location" placeholder="Enter Airport Location eg.(Mumbai, Maharshtra)" [(ngModel)]="es.selectedAirport.location" name="location">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+      </form>
+  </div>
+  <br>
+  <div class="container">
+    <h3>Display Airports</h3>
+    <table class="table  table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Airport ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Code</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ap of es.airports">
+          <td>{{ap.airport_id}}</td>
+          <td>{{ap.name}}</td>
+          <td>{{ap.code}}</td>
+          <td>{{ap.location}}</td>
+          <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateAirport(ap)"></td>
+          <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteAirport(ap.airport_id)" ></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
