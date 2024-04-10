@@ -10,6 +10,9 @@ import { AircraftService } from './services/aircraft.service';
 import { AirportComponent } from './airport/airport.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AirportService } from './services/airport.service';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { TripFormComponent } from './trip-form/trip-form.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { AirportService } from './services/airport.service';
     AppComponent,
     AircraftFormComponent,
     AirportComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminPageComponent,
+    TripFormComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

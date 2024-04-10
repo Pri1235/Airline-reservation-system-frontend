@@ -1,9 +1,9 @@
-<h3 class = 'text-center'>Aircraft Creation/Updation</h3>
+<h3 class = 'text-center'>Aircraft Creation</h3>
 <hr>
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form #aircraftForm="ngForm" (ngSubmit)="onSubmit(aircraftForm)" class="mt-4">
+        <form #aircraftForm="ngForm" (ngSubmit)="onSubmit(aircraftForm)" >
           <div class="mb-3">
             <label for="aircraft_id" class="form-label">Aircraft ID</label>
             <input type="number" class="form-control" id="aircraft_id" placeholder="Enter Aircraft ID" [(ngModel)]="es.selectedAircraft.aircraft_id" name="aircraft_id">

@@ -1,0 +1,21 @@
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+               ✈️
+                Airline Reservation System
+            </a>
+           
+            <button (click)="showAdminPage()"  class="btn btn-primary">Go to Admin Page</button>
+        </div>
+    </nav>
+    <hr>
+</div>
+<div class="container">
+    <div *ngIf="showAdminContent">
+        <app-admin-page></app-admin-page>
+    </div>
+    <div *ngIf="!showAdminContent">
+        <app-trip-form></app-trip-form>
+    </div>
+</div>
