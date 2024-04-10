@@ -1,6 +1,9 @@
+<h3 class = 'text-center'>Airport Creation</h3>
+<hr>
 <div class="container">
-  <h3>Create Airport</h3>
-    <form #apForm="ngForm" (ngSubmit)="onSubmit(apForm)">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> 
+      <form #apForm="ngForm" (ngSubmit)="onSubmit(apForm)">
         <div class="mb-3">
           <label for="airport_id" class="form-label">Airport ID</label>
           <input type="number" class="form-control" id="airport_id" placeholder="Enter Airport ID" [(ngModel)]="es.selectedAirport.airport_id" name="airport_id">
@@ -21,10 +24,17 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-warning">Reset</button>
       </form>
+    </div>
+    
+  </div>
+  
   </div>
   <br>
+
+  <h2 class = 'text-center'>Airport Details</h2>
+  <hr>
   <div class="container">
-    <h3>Display Airports</h3>
+    
     <table class="table  table-hover">
       <thead>
         <tr>

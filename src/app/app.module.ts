@@ -10,6 +10,12 @@ import { AircraftService } from './services/aircraft.service';
 import { AirportComponent } from './airport/airport.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AirportService } from './services/airport.service';
+
+
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { TripFormComponent } from './trip-form/trip-form.component';
+import { HomePageComponent } from './home-page/home-page.component';
+
 import { AirlineFormComponent } from './airline-form/airline-form.component';
 import { AirlineService } from './services/airline.service';
 
@@ -20,7 +26,10 @@ import { AirlineService } from './services/airline.service';
     AircraftFormComponent,
     AirportComponent,
     NavbarComponent,
-    AirlineFormComponent
+    AirlineFormComponent,
+    AdminPageComponent,
+    TripFormComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
