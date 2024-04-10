@@ -10,6 +10,8 @@ import { AircraftService } from './services/aircraft.service';
 import { AirportComponent } from './airport/airport.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AirportService } from './services/airport.service';
+import { AirlineFormComponent } from './airline-form/airline-form.component';
+import { AirlineService } from './services/airline.service';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { AirportService } from './services/airport.service';
     AppComponent,
     AircraftFormComponent,
     AirportComponent,
-    NavbarComponent
+    NavbarComponent,
+    AirlineFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { AirportService } from './services/airport.service';
     HttpClientModule,
 
   ],
-  providers: [AircraftService,AirportService],
+  providers: [AircraftService, AirportService, AirlineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

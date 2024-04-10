@@ -1,0 +1,51 @@
+<h3 class = 'text-center'>Airline Creation/Updation</h3>
+<hr>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form #airlineForm="ngForm" (ngSubmit)="onSubmit(airlineForm)" class="mt-4">
+          <div class="mb-3">
+            <label for="airline_id" class="form-label">Airline ID</label>
+            <input type="number" class="form-control" id="airline_id" placeholder="Enter Airline ID" [(ngModel)]="es.selectedAirline.airline_id" name="airline_id">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Name" [(ngModel)]="es.selectedAirline.name" name="name">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-warning">Reset</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+<hr>
+<h2 class = 'text-center'>Airline Details</h2>
+<hr>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th>Airline ID</th>
+              <th>Name</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let airline of es.airlines">
+              <td>{{ airline.airline_id }}</td>
+              <td>{{ airline.name }}</td>
+              <td><button class="btn btn-primary" (click)="updateAirline(airline)">EDIT</button></td>
+              <td><button class="btn btn-danger" (click)="deleteAirlineById(airline.airline_id)">DELETE</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
