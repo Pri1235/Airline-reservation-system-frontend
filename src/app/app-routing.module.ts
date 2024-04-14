@@ -6,6 +6,9 @@ import { AircraftFormComponent } from './aircraft-form/aircraft-form.component';
 import { AirlineFormComponent } from './airline-form/airline-form.component';
 
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { FlightComponent } from './flight-form/flight-form.component';
+import { TripCrudComponent } from './trip-crud/trip-crud.component';
+
 
 
 const routes: Routes = [
@@ -28,6 +31,12 @@ const routes: Routes = [
   {
     path: 'airline',
     component: AirlineFormComponent
+  },{
+    path: 'flight',
+    component:FlightComponent
+  },{
+    path:'trip',
+    component:TripCrudComponent
   }
 ];
 

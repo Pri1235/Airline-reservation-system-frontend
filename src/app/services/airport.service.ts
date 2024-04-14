@@ -16,10 +16,10 @@ export class AirportService {
   }
 
   postAirport(ap:Airport){
-    return this.http.post("http://localhost:8686/airport",ap)
+    return this.http.post("http://localhost:8686/airport/add",ap)
   }
   getAllAirports(){
-    return this.http.get("http://localhost:8686/airports");
+    return this.http.get("http://localhost:8686/airport/get/all");
   }
 
   deleteAirpt(id:number){

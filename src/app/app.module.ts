@@ -18,6 +18,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 import { AirlineFormComponent } from './airline-form/airline-form.component';
 import { AirlineService } from './services/airline.service';
+import { FlightComponent } from './flight-form/flight-form.component';
+import { FlightService } from './services/flight.service';
+import { TripCrudComponent } from './trip-crud/trip-crud.component';
+
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { AirlineService } from './services/airline.service';
     AirlineFormComponent,
     AdminPageComponent,
     TripFormComponent,
-    HomePageComponent
+    HomePageComponent,
+    FlightComponent,
+    TripCrudComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,7 @@ import { AirlineService } from './services/airline.service';
     HttpClientModule,
 
   ],
-  providers: [AircraftService, AirportService, AirlineService],
+  providers: [AircraftService, AirportService, AirlineService,FlightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,71 @@
+<h3 class="text-center">Flight Creation</h3>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> 
+      <form #flightForm="ngForm" (ngSubmit)="onSubmit(flightForm)">
+        <div class="mb-3">
+          <label for="flight_id" class="form-label">Flight ID</label>
+          <input type="number" class="form-control" id="flight_id" placeholder="Enter Flight ID" [(ngModel)]="flightModel.flight_id" name="flight_id">
+        </div>
+        <div class="mb-3">
+          <label for="flight_name" class="form-label">Flight Name</label>
+          <input type="text" class="form-control" id="flight_name" placeholder="Enter Flight Name" [(ngModel)]="flightModel.flight_name" name="flight_name">
+        </div>
+        <div class="mb-3">
+          <label for="flight_number" class="form-label">Flight Number</label>
+          <input type="number" class="form-control" id="flight_number" placeholder="Enter Flight Number" [(ngModel)]="flightModel.flight_number" name="flight_number">
+        </div>
+        <div class="mb-3">
+          <label for="airlineId" class="form-label">Select Airline</label>
+          <select class="form-select" id="airlineId" [(ngModel)]="flightModel.airlineId" name="airlineId">
+            <option *ngFor="let airline of airlines" [ngValue]="airline.airlineId">{{ airline.name }}</option>
+          </select>
+        </div>
+
+        <!-- Dropdown for Aircrafts -->
+        <div class="mb-3">
+          <label for="aircraft_id" class="form-label">Select Aircraft</label>
+          <select class="form-select" id="aircraft_id" [(ngModel)]="flightModel.aircraft_id" name="aircraft_id">
+            <option *ngFor="let aircraft of aircrafts" [ngValue]="aircraft.aircraft_id">{{ aircraft.make }}</option>
+          </select>
+        </div>
+
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+      </form>
+    </div>
+    
+  </div>
+  
+</div>
+<br>
+
+<h2 class="text-center">Flight Details</h2>
+<hr>
+<div class="container">
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Flight ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Flight Number</th>
+        <th scope="col">Airline ID</th>
+        <th scope="col">Aircraft ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.flight_id }}</td>
+        <td>{{ flight.flight_name }}</td>
+        <td>{{ flight.flight_number }}</td>
+        <td>{{ flight.airlineId }}</td>
+        <td>{{ flight.aircraft_id }}</td>
+        <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateFlight(flight)"></td>
+        <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteFlight(flight.flight_id)" ></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
