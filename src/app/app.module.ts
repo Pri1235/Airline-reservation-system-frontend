@@ -20,7 +20,8 @@ import { AirlineFormComponent } from './airline-form/airline-form.component';
 import { AirlineService } from './services/airline.service';
 import { FlightComponent } from './flight-form/flight-form.component';
 import { FlightService } from './services/flight.service';
-import { TripCrudComponent } from './trip-crud/trip-crud.component';
+import { TripComponent } from './trip-crud/trip-crud.component';
+
 
 
 
@@ -35,7 +36,7 @@ import { TripCrudComponent } from './trip-crud/trip-crud.component';
     TripFormComponent,
     HomePageComponent,
     FlightComponent,
-    TripCrudComponent,
+    TripComponent
     
   ],
   imports: [
@@ -45,7 +46,7 @@ import { TripCrudComponent } from './trip-crud/trip-crud.component';
     HttpClientModule,
 
   ],
-  providers: [AircraftService, AirportService, AirlineService,FlightService],
+  providers: [AircraftService, AirportService, AirlineService,FlightService,TripComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

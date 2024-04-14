@@ -34,4 +34,11 @@ export class TripService {
   findTripsBySourceDestinationAndDateTime(fromAirportId: number, toAirportId: number, departureDateTime: string, arrivalDateTime: string): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8686/trip/from/' + fromAirportId + '/to/' + toAirportId + '/departure/' + departureDateTime + '/arrival/' + arrivalDateTime);
   }
+
+  getAllFlights() {
+    return this.http.get('http://localhost:8686/flight/get/all');
+  }
+  getAllAirports(){
+    return this.http.get("http://localhost:8686/airport/get/all");
+  }
 }

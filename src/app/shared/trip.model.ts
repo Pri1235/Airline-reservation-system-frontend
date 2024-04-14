@@ -2,20 +2,20 @@
 
 export class Trip {
     trip_id: number;
-    flight: any;
+    flight_id: number;
     departureDateTime: string; 
     arrivalDateTime: string; 
-    fromAirport: any;
-    toAirport: any;
+    fromAirportId: number;
+    toAirportId: number;
     cost: number;
 
     constructor() {
         this.trip_id = 0;
-        this.flight = null;
+        this.flight_id = 0;
         this.departureDateTime = '';
         this.arrivalDateTime = '';
-        this.fromAirport = null;
-        this.toAirport = null;
+        this.fromAirportId = 0;
+        this.toAirportId = 0;
         this.cost = 0;
     }
 }

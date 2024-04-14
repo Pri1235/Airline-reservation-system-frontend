@@ -1,0 +1,78 @@
+<h3 class="text-center">Trip Creation</h3>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6"> 
+      <form #tripForm="ngForm" (ngSubmit)="onSubmit(tripForm)">
+        <div class="mb-3">
+          <label for="trip_id" class="form-label">Trip ID</label>
+          <input type="number" class="form-control" id="trip_id" placeholder="Enter Trip ID" [(ngModel)]="tripModel.trip_id" name="trip_id">
+        </div>
+        <div class="mb-3">
+          <label for="flight_id" class="form-label">Select Flight</label>
+          <select class="form-select" id="flight_id" [(ngModel)]="tripModel.flight_id" name="flight_id">
+            <option *ngFor="let flight of flights" [ngValue]="flight.flight_id">{{ flight.flight_name }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="departureDateTime" class="form-label">Departure Date and Time</label>
+          <input type="datetime-local" class="form-control" id="departureDateTime" [(ngModel)]="tripModel.departureDateTime" name="departureDateTime">
+        </div>
+        <div class="mb-3">
+          <label for="arrivalDateTime" class="form-label">Arrival Date and Time</label>
+          <input type="datetime-local" class="form-control" id="arrivalDateTime" [(ngModel)]="tripModel.arrivalDateTime" name="arrivalDateTime">
+        </div>
+        <div class="mb-3">
+            <label for="from_airport_id" class="form-label">Select From Airport</label>
+            <select class="form-select" id="from_airport_id" [(ngModel)]="tripModel.fromAirportId" name="from_airport_id">
+              <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">{{ airport.name }}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="to_airport_id" class="form-label">Select To Airport</label>
+            <select class="form-select" id="to_airport_id" [(ngModel)]="tripModel.toAirportId" name="to_airport_id">
+              <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">{{ airport.name }}</option>
+            </select>
+          </div>
+        <div class="mb-3">
+          <label for="cost" class="form-label">Cost</label>
+          <input type="number" class="form-control" id="cost" placeholder="Enter Cost" [(ngModel)]="tripModel.cost" name="cost">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+<h2 class="text-center">Trip Details</h2>
+<hr>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Trip ID</th>
+        <th scope="col">Flight ID</th>
+        <th scope="col">Departure DateTime</th>
+        <th scope="col">Arrival DateTime</th>
+        <th scope="col">From Airport ID</th>
+        <th scope="col">To Airport ID</th>
+        <th scope="col">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trip of trips">
+        <td>{{ trip.trip_id }}</td>
+        <td>{{ trip.flight_id }}</td>
+        <td>{{ trip.departureDateTime }}</td>
+        <td>{{ trip.arrivalDateTime }}</td>
+        <td>{{ trip.fromAirportId }}</td>
+        <td>{{ trip.toAirportId }}</td>
+        <td>{{ trip.cost }}</td>
+        <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateTrip(trip)"></td>
+        <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteTrip(trip.trip_id)" ></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
