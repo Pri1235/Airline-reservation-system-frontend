@@ -1,10 +1,10 @@
 export class Airline {
-    airlineId: number;
+    airline_id: number;
     name: string;
     
     constructor()
     {
-        this.airlineId = 0;
+        this.airline_id = 0;
         this.name = "";
     }
 }

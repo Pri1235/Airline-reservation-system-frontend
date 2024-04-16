@@ -4,10 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form #airlineForm="ngForm" (ngSubmit)="onSubmit(airlineForm)" class="mt-4">
-          <div class="mb-3">
-            <label for="airlineId" class="form-label">Airline ID</label>
-            <input type="number" class="form-control" id="airlineId" placeholder="Enter Airline ID" [(ngModel)]="es.selectedAirline.airlineId" name="airlineId">
-          </div>
+        
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Enter Name" [(ngModel)]="es.selectedAirline.name" name="name">
@@ -38,10 +35,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let airline of es.airlines">
-              <td>{{ airline.airlineId }}</td>
+              <td>{{ airline.airline_id }}</td>
               <td>{{ airline.name }}</td>
               <td><button class="btn btn-primary" (click)="updateAirline(airline)">EDIT</button></td>
-              <td><button class="btn btn-danger" (click)="deleteAirlineById(airline.airlineId)">DELETE</button></td>
+              <td><button class="btn btn-danger" (click)="deleteAirlineById(airline.airline_id)">DELETE</button></td>
             </tr>
           </tbody>
         </table>

@@ -17,9 +17,9 @@
           <input type="number" class="form-control" id="flight_number" placeholder="Enter Flight Number" [(ngModel)]="flightModel.flight_number" name="flight_number">
         </div>
         <div class="mb-3">
-          <label for="airlineId" class="form-label">Select Airline</label>
-          <select class="form-select" id="airlineId" [(ngModel)]="flightModel.airlineId" name="airlineId">
-            <option *ngFor="let airline of airlines" [ngValue]="airline.airlineId">{{ airline.name }}</option>
+          <label for="airline_id" class="form-label">Select Airline</label>
+          <select class="form-select" id="airline_id" [(ngModel)]="flightModel.airline_id" name="airline_id">
+            <option *ngFor="let airline of airlines" [ngValue]="airline.airline_id">{{ airline.name }}</option>
           </select>
         </div>
 
@@ -61,7 +61,7 @@
         <td>{{ flight.flight_id }}</td>
         <td>{{ flight.flight_name }}</td>
         <td>{{ flight.flight_number }}</td>
-        <td>{{ flight.airlineId }}</td>
+        <td>{{ flight.airline_id }}</td>
         <td>{{ flight.aircraft_id }}</td>
         <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateFlight(flight)"></td>
         <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteFlight(flight.flight_id)" ></td>
