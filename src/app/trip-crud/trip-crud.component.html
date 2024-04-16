@@ -9,8 +9,8 @@
           <input type="number" class="form-control" id="trip_id" placeholder="Enter Trip ID" [(ngModel)]="tripModel.trip_id" name="trip_id">
         </div>
         <div class="mb-3">
-          <label for="flight_id" class="form-label">Select Flight</label>
-          <select class="form-select" id="flight_id" [(ngModel)]="tripModel.flight_id" name="flight_id">
+          <label for="flightId" class="form-label">Select Flight</label>
+          <select class="form-select" id="flightId" [(ngModel)]="tripModel.flightId" name="flightId">
             <option *ngFor="let flight of flights" [ngValue]="flight.flight_id">{{ flight.flight_name }}</option>
           </select>
         </div>
@@ -23,14 +23,14 @@
           <input type="datetime-local" class="form-control" id="arrivalDateTime" [(ngModel)]="tripModel.arrivalDateTime" name="arrivalDateTime">
         </div>
         <div class="mb-3">
-            <label for="from_airport_id" class="form-label">Select From Airport</label>
-            <select class="form-select" id="from_airport_id" [(ngModel)]="tripModel.fromAirportId" name="from_airport_id">
+            <label for="fromAirportId" class="form-label">Select From Airport</label>
+            <select class="form-select" id="fromAirportId" [(ngModel)]="tripModel.fromAirportId" name="fromAirportId">
               <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">{{ airport.name }}</option>
             </select>
           </div>
           <div class="mb-3">
-            <label for="to_airport_id" class="form-label">Select To Airport</label>
-            <select class="form-select" id="to_airport_id" [(ngModel)]="tripModel.toAirportId" name="to_airport_id">
+            <label for="toAirportId" class="form-label">Select To Airport</label>
+            <select class="form-select" id="toAirportId" [(ngModel)]="tripModel.toAirportId" name="toAirportId">
               <option *ngFor="let airport of airports" [ngValue]="airport.airport_id">{{ airport.name }}</option>
             </select>
           </div>
@@ -64,7 +64,7 @@
     <tbody>
       <tr *ngFor="let trip of trips">
         <td>{{ trip.trip_id }}</td>
-        <td>{{ trip.flight_id }}</td>
+        <td>{{ trip.flightId }}</td>
         <td>{{ trip.departureDateTime }}</td>
         <td>{{ trip.arrivalDateTime }}</td>
         <td>{{ trip.fromAirportId }}</td>

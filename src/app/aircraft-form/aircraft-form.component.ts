@@ -25,6 +25,7 @@ export class AircraftFormComponent implements OnInit {
     this.es.postAircraft(form.value).subscribe((res)=>{
       console.log("Aircraft record inserted successfully....")
       form.reset();
+      this.cdr.detectChanges();
       this.refreshAircrafts();
 
     })

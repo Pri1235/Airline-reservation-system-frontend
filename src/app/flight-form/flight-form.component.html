@@ -16,18 +16,19 @@
           <label for="flight_number" class="form-label">Flight Number</label>
           <input type="number" class="form-control" id="flight_number" placeholder="Enter Flight Number" [(ngModel)]="flightModel.flight_number" name="flight_number">
         </div>
-        <div class="mb-3">
-          <label for="airline_id" class="form-label">Select Airline</label>
-          <select class="form-select" id="airline_id" [(ngModel)]="flightModel.airline_id" name="airline_id">
-            <option *ngFor="let airline of airlines" [ngValue]="airline.airlineId">{{ airline.name }}</option>
-          </select>
-        </div>
+       
 
-        <!-- Dropdown for Aircrafts -->
         <div class="mb-3">
           <label for="aircraft_id" class="form-label">Select Aircraft</label>
           <select class="form-select" id="aircraft_id" [(ngModel)]="flightModel.aircraft_id" name="aircraft_id">
             <option *ngFor="let aircraft of aircrafts" [ngValue]="aircraft.aircraft_id">{{ aircraft.make }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="airline_id" class="form-label">Select Airline</label>
+          <select class="form-select" id="airline_id" [(ngModel)]="flightModel.airline_id" name="airline_id">
+            <option *ngFor="let airline of airlines" [ngValue]="airline.airlineId">{{ airline.name }}</option>
           </select>
         </div>
 

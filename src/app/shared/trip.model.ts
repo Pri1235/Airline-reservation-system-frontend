@@ -2,7 +2,7 @@
 
 export class Trip {
     trip_id: number;
-    flight_id: number;
+    flightId: number;
     departureDateTime: string; 
     arrivalDateTime: string; 
     fromAirportId: number;
@@ -11,7 +11,7 @@ export class Trip {
 
     constructor() {
         this.trip_id = 0;
-        this.flight_id = 0;
+        this.flightId = 0;
         this.departureDateTime = '';
         this.arrivalDateTime = '';
         this.fromAirportId = 0;
