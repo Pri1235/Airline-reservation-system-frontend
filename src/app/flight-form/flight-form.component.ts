@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FlightService } from '../services/flight.service';
 import { Flight } from '../shared/flight';
 import { NgForm } from '@angular/forms';
@@ -16,7 +16,7 @@ export class FlightComponent implements OnInit {
   airlines: Airline[] = [];
   aircrafts: Aircraft[] = [];
 
-  constructor(public flightService: FlightService) { }
+  constructor(public flightService: FlightService,private cr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.refreshFlights();
@@ -29,12 +29,14 @@ export class FlightComponent implements OnInit {
     this.flightService.postFlight(form.value).subscribe((res) => {
       this.refreshFlights();
       form.reset();
+      this.cr.detectChanges();
     });
   }
 
   refreshFlights() {
     this.flightService.getAllFlights().subscribe((res) => {
       this.flights = res as Flight[];
+      this.cr.detectChanges();
     });
   }
 

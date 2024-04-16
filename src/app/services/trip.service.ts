@@ -11,7 +11,7 @@ export class TripService {
   trips: Trip[];
 
   constructor(private http: HttpClient) {
-    this.selectedTrip = new Trip();
+    this.selectedTrip = {trip_id:0,flightId:0,departureDateTime:"",arrivalDateTime:"",fromAirportId:0,toAirportId:0,cost:0};
     this.trips = [];
   }
 

@@ -11,7 +11,7 @@ export class FlightService {
   flights: Flight[];
 
   constructor(private http: HttpClient) {
-    this.selectedFlight = {flight_id:0,flight_number:0,flight_name:"",aircraft_id:0,airlineId:0,trip:0}
+    this.selectedFlight = {flight_id:0,flight_number:0,flight_name:"",aircraft_id:0,airline_id:0}
     this.flights = [];
   }
 
@@ -24,15 +24,15 @@ export class FlightService {
   }
 
   deleteFlight(id: number) {
-    return this.http.delete('http://localhost:8686/flight' + id);
+    return this.http.delete('http://localhost:8686/flight/' + id);
   }
 
   updateFlight(id: number, flight: Flight) {
-    return this.http.put('http://localhost:8686/flight' + id, flight);
+    return this.http.put('http://localhost:8686/flight/' + id, flight);
   }
 
   getFlightsByAirlineId(airlineId: number): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8686/flight' + airlineId);
+    return this.http.get<any[]>('http://localhost:8686/flight/' + airlineId);
   }
 
   getAllAirlines(): Observable<any[]> {
