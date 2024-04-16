@@ -14,7 +14,7 @@ export class AirlineService {
   url:string = "http://localhost:8686/airline"
 
   constructor(private http:HttpClient) { 
-    this.selectedAirline = {airline_id: 0, name: ""}
+    this.selectedAirline = {airlineId: 0, name: ""}
     this.airlines = [];
   }
 
@@ -23,7 +23,7 @@ export class AirlineService {
   }
 
   updateAirline(airline: Airline) {
-    return this.http.put(this.url + "/" + airline.airline_id, airline);
+    return this.http.put(this.url + "/" + airline.airlineId, airline);
   }
 
   getAllAirlines() {

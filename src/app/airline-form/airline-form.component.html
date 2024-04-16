@@ -35,10 +35,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let airline of es.airlines">
-              <td>{{ airline.airline_id }}</td>
+              <td>{{ airline.airlineId }}</td>
               <td>{{ airline.name }}</td>
               <td><button class="btn btn-primary" (click)="updateAirline(airline)">EDIT</button></td>
-              <td><button class="btn btn-danger" (click)="deleteAirlineById(airline.airline_id)">DELETE</button></td>
+              <td><button class="btn btn-danger" (click)="deleteAirlineById(airline.airlineId)">DELETE</button></td>
             </tr>
           </tbody>
         </table>

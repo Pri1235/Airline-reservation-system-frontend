@@ -19,7 +19,7 @@
         <div class="mb-3">
           <label for="airline_id" class="form-label">Select Airline</label>
           <select class="form-select" id="airline_id" [(ngModel)]="flightModel.airline_id" name="airline_id">
-            <option *ngFor="let airline of airlines" [ngValue]="airline.airline_id">{{ airline.name }}</option>
+            <option *ngFor="let airline of airlines" [ngValue]="airline.airlineId">{{ airline.name }}</option>
           </select>
         </div>
 

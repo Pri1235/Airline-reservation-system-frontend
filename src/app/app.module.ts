@@ -21,6 +21,7 @@ import { AirlineService } from './services/airline.service';
 import { FlightComponent } from './flight-form/flight-form.component';
 import { FlightService } from './services/flight.service';
 import { TripComponent } from './trip-crud/trip-crud.component';
+import { PassengerFormComponent } from './passenger-form/passenger-form.component';
 
 
 
@@ -36,7 +37,8 @@ import { TripComponent } from './trip-crud/trip-crud.component';
     TripFormComponent,
     HomePageComponent,
     FlightComponent,
-    TripComponent
+    TripComponent,
+    PassengerFormComponent
     
   ],
   imports: [

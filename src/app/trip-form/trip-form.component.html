@@ -1,8 +1,11 @@
-<div class="conatiner">
-   <h4>Search For flights here</h4>
 
-</div>
-<div class="container mt-3">
+
+<div class="container" *ngIf="showTripCards" id="trip-list">
+  <div class="container">
+    <h4 style="color: aliceblue;">Search For flights here ➡️</h4>
+  </div>
+  
+  <div class="container mt-3">
     <form>
       <div class="row">
         <div class="col">
@@ -26,4 +29,18 @@
       </div>
       <button type="submit" class="btn btn-primary mt-3">Search Flights</button>
     </form>
+  
+    
   </div>
+   <div class="card w-100" *ngFor="let trip of tripList">
+       <div class="card-body">
+           <h5 class="card-title">{{ trip.name }}</h5>
+           <p class="card-text">{{ trip.details }}</p>
+           <button (click)="showPassengerForm()" class="btn btn-primary">Proceed</button>
+       </div>
+   </div>
+</div>
+
+<div class="container" *ngIf="showPassengerFormPage" id="trip-list">
+   <app-passenger-form></app-passenger-form>
+</div>
