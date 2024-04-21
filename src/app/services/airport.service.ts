@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Airport } from '../shared/airport';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -24,5 +25,9 @@ export class AirportService {
 
   deleteAirpt(id:number){
     return this.http.delete("http://localhost:8686/airport/"+id)
+  }
+  getAirportIdByCode(airportCode: string): Observable<number> {
+    const url = `http://localhost:8686/airport/code/${airportCode}`;
+    return this.http.get<number>(url);
   }
 }

@@ -15,23 +15,23 @@ export class FlightService {
     this.flights = [];
   }
 
-  postFlight(flight: Flight) {
+  postFlight(flight: Flight): Observable<any> {
     return this.http.post('http://localhost:8686/flight/add', flight);
   }
 
-  getAllFlights() {
+  getAllFlights(): Observable<any> {
     return this.http.get('http://localhost:8686/flight/get/all');
   }
 
-  deleteFlight(id: number) {
+  deleteFlight(id: number): Observable<any> {
     return this.http.delete('http://localhost:8686/flight/' + id);
   }
 
-  updateFlight(id: number, flight: Flight) {
+  updateFlight(id: number, flight: Flight): Observable<any> {
     return this.http.put('http://localhost:8686/flight/' + id, flight);
   }
 
-  getFlightsByAirlineId(airlineId: number): Observable<any[]> {
+  getFlightsByAirlineId(airlineId: number): Observable<any> {
     return this.http.get<any[]>('http://localhost:8686/flight/' + airlineId);
   }
 

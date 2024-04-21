@@ -4,7 +4,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6"> 
       <form #flightForm="ngForm" (ngSubmit)="onSubmit(flightForm)">
-        <div class="mb-3">
+        <div class="mb-3" hidden>
           <label for="flight_id" class="form-label">Flight ID</label>
           <input type="number" class="form-control" id="flight_id" placeholder="Enter Flight ID" [(ngModel)]="flightModel.flight_id" name="flight_id">
         </div>
@@ -50,7 +50,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Flight ID</th>
+        <!-- <th scope="col">Flight ID</th> -->
         <th scope="col">Name</th>
         <th scope="col">Flight Number</th>
         <th scope="col">Airline ID</th>
@@ -59,7 +59,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let flight of flights">
-        <td>{{ flight.flight_id }}</td>
+        <!-- <td>{{ flight.flight_id }}</td> -->
         <td>{{ flight.flight_name }}</td>
         <td>{{ flight.flight_number }}</td>
         <td>{{ flight.airline_id }}</td>

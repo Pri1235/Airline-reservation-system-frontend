@@ -1,58 +1,82 @@
-<h3 class = 'text-center'>Airport Creation</h3>
-<hr>
+<h3 class="text-center">Airport Creation</h3>
+<hr />
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6"> 
-      <form #apForm="ngForm" (ngSubmit)="onSubmit(apForm)">
-        <div class="mb-3">
-          <label for="airport_id" class="form-label">Airport ID</label>
-          <input type="number" class="form-control" id="airport_id" placeholder="Enter Airport ID" [(ngModel)]="es.selectedAirport.airport_id" name="airport_id">
-        </div>
+    <div class="col-md-6">
+      <div class="alert alert-success" role="alert" *ngIf="showSuccessAlert">
+        Airport Added successfully
+      </div>
+      <form class="was-validated" #apForm="ngForm" (ngSubmit)="onSubmit(apForm)">
         <div class="mb-3">
           <label for="name" class="form-label">Airport Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter Airport Name" [(ngModel)]="es.selectedAirport.name" name="name">
+          <input type="text" class="form-control is-invalid" id="name" placeholder="Enter Airport Name"
+            [(ngModel)]="es.selectedAirport.name" name="name" required minlength="10" maxlength="50" appForbiddenName="bob"
+            #name="ngModel">
+          <div *ngIf="apForm.controls['name'].invalid && (apForm.controls['name'].dirty || apForm.controls['name'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="apForm.controls['name'].errors?.['required']">Name is required.</div>
+            <div *ngIf="apForm.controls['name'].errors?.['minlength']">Name must be at least 10 characters long.</div>
+            <div *ngIf="apForm.controls['name'].errors?.['forbiddenName']">Name cannot be 'bob'.</div>
+          </div>
         </div>
         <div class="mb-3">
           <label for="code" class="form-label">Airport Code</label>
-          <input type="text" class="form-control" id="code" placeholder="Enter Airport Code eg.(BOM)" [(ngModel)]="es.selectedAirport.code" name="code">
+          <input type="text" class="form-control is-invalid" id="code" placeholder="Enter Airport Code eg.(BOM)"
+            [(ngModel)]="es.selectedAirport.code" name="code" required minlength="3" maxlength="3"
+            pattern="[A-Za-z]{3}">
+          <div *ngIf="apForm.controls['code'].invalid && (apForm.controls['code'].dirty || apForm.controls['code'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="apForm.controls['code'].errors?.['required']">Code is required.</div>
+            <div *ngIf="apForm.controls['code'].errors?.['minlength']">Code must be exactly 3 characters long.</div>
+            <div *ngIf="apForm.controls['code'].errors?.['pattern']">Code must contain only letters and be 3 characters long.</div>
+          </div>
         </div>
         <div class="mb-3">
           <label for="location" class="form-label">Airport Location</label>
-          <input type="text" class="form-control" id="location" placeholder="Enter Airport Location eg.(Mumbai, Maharshtra)" [(ngModel)]="es.selectedAirport.location" name="location">
+          <input type="text" class="form-control is-invalid" id="location" placeholder="Enter Airport Location eg.(Mumbai, Maharshtra)"
+            [(ngModel)]="es.selectedAirport.location" name="location" required minlength="5" maxlength="50"
+            pattern="[A-Za-z\s,]{5,50}">
+          <div *ngIf="apForm.controls['location'].invalid && (apForm.controls['location'].dirty || apForm.controls['location'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="apForm.controls['location'].errors?.['required']">Location is required.</div>
+            <div *ngIf="apForm.controls['location'].errors?.['minlength']">Location must be at least 5 characters long.</div>
+            <div *ngIf="apForm.controls['location'].errors?.['maxlength']">Location cannot exceed 50 characters.</div>
+            <div *ngIf="apForm.controls['location'].errors?.['pattern']">Invalid characters in Location.</div>
+          </div>
         </div>
-      
+
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-warning">Reset</button>
       </form>
     </div>
-    
   </div>
-  
-  </div>
-  <br>
+</div>
+<br />
 
-  <h2 class = 'text-center'>Airport Details</h2>
-  <hr>
-  <div class="container">
-    
-    <table class="table  table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Airport ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Code</th>
-          <th scope="col">Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ap of es.airports">
-          <td>{{ap.airport_id}}</td>
-          <td>{{ap.name}}</td>
-          <td>{{ap.code}}</td>
-          <td>{{ap.location}}</td>
-          <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateAirport(ap)"></td>
-          <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteAirport(ap.airport_id)" ></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<h2 class="text-center">Airport Details</h2>
+<hr />
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Code</th>
+        <th scope="col">Location</th>
+        <th scope="colgroup">Action Buttons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ap of es.airports">
+        <td>{{ ap.name }}</td>
+        <td>{{ ap.code }}</td>
+        <td>{{ ap.location }}</td>
+        <td>
+          <input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateAirport(ap)" />
+        </td>
+        <td>
+          <input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteAirport(ap.airport_id)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

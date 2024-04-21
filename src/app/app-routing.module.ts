@@ -8,6 +8,7 @@ import { AirlineFormComponent } from './airline-form/airline-form.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { FlightComponent } from './flight-form/flight-form.component';
 import { TripComponent } from './trip-crud/trip-crud.component';
+import { SeatCrudComponent } from './seat-crud/seat-crud.component';
 
 
 
@@ -37,6 +38,9 @@ const routes: Routes = [
   },{
     path:'trip',
     component:TripComponent
+  },{
+    path:'seat',
+    component:SeatCrudComponent
   }
 ];
 

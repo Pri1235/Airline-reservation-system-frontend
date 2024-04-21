@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
 import { FlightService } from '../services/flight.service';
 import { Flight } from '../shared/flight';
 import { NgForm } from '@angular/forms';
@@ -12,28 +11,48 @@ import { Aircraft } from '../shared/aircraft.model';
   styleUrls: ['./flight-form.component.css']
 })
 export class FlightComponent implements OnInit {
+  showSuccessAlert: boolean = false;
   flightModel: Flight = new Flight(); 
   flights: Flight[] = []; 
   airlines: Airline[] = [];
   aircrafts: Aircraft[] = [];
 
-  constructor(public flightService: FlightService,private cr: ChangeDetectorRef) { }
-
+  constructor(public flightService: FlightService, private cr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.refreshFlights();
-    this.fetchAirline(); // Corrected method name
-    this.fetchAircraft(); // Corrected method name
+    this.fetchAirlines(); // Updated method name
+    this.fetchAircrafts(); // Updated method name
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value)
-    this.flightService.postFlight(form.value).subscribe((res) => {
-      this.refreshFlights();
-      this.cr.detectChanges();
-      form.reset();
-      this.cr.detectChanges();
-    });
+    if (form.valid) {
+      console.log(form.value);
+      this.flightService.postFlight(form.value).subscribe(
+        
+        (res) => {
+          if (typeof res === 'string') {
+            console.log("Response is a string:", res);
+            // Handle the string response accordingly
+          } else {
+            console.log("Response is not a string:", res);
+            // Handle other types of responses as needed
+          }
+          console.log(res); // Log the response
+          this.refreshFlights();
+          form.reset();
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showSuccessAlert = false;
+          }, 2000);
+        },
+        (error) => {
+          console.error("Error adding flight:", error);
+        }
+      );
+    } else {
+      console.log("Form is invalid.");
+    }
   }
 
   refreshFlights() {
@@ -57,15 +76,17 @@ export class FlightComponent implements OnInit {
     }
   }
 
-  fetchAirline() { 
+  fetchAirlines() { 
     this.flightService.getAllAirlines().subscribe((res) => {
       this.airlines = res as Airline[];
     });
   }
 
-  fetchAircraft() { 
+  fetchAircrafts() { 
     this.flightService.getAllAircrafts().subscribe((res) => {
       this.aircrafts = res as Aircraft[];
     });
   }
+
+  
 }

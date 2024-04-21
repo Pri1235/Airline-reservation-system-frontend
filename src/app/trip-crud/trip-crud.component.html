@@ -4,7 +4,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6"> 
       <form #tripForm="ngForm" (ngSubmit)="onSubmit(tripForm)">
-        <div class="mb-3">
+        <div class="mb-3" hidden>
           <label for="trip_id" class="form-label">Trip ID</label>
           <input type="number" class="form-control" id="trip_id" placeholder="Enter Trip ID" [(ngModel)]="tripModel.trip_id" name="trip_id">
         </div>

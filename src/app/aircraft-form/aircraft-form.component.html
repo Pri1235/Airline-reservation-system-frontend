@@ -1,63 +1,81 @@
-<h3 class = 'text-center'>Aircraft Creation</h3>
+<h3 class="text-center">Aircraft Creation</h3>
 <hr>
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form #aircraftForm="ngForm" (ngSubmit)="onSubmit(aircraftForm)" >
-          <div class="mb-3">
-            <label for="aircraft_id" class="form-label">Aircraft ID</label>
-            <input type="number" class="form-control" id="aircraft_id" placeholder="Enter Aircraft ID" [(ngModel)]="es.selectedAircraft.aircraft_id" name="aircraft_id">
-          </div>
-          <div class="mb-3">
-            <label for="make" class="form-label">Make</label>
-            <input type="text" class="form-control" id="make" placeholder="Enter Make" [(ngModel)]="es.selectedAircraft.make" name="make">
-          </div>
-          <div class="mb-3">
-            <label for="model" class="form-label">Model</label>
-            <input type="text" class="form-control" id="model" placeholder="Enter Model" [(ngModel)]="es.selectedAircraft.model" name="model">
-          </div>
-          <div class="mb-3">
-            <label for="capacity" class="form-label">Capacity</label>
-            <input type="number" class="form-control" id="capacity" placeholder="Enter capacity" [(ngModel)]="es.selectedAircraft.capacity" name="capacity">
-          </div>
-          
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button type="reset" class="btn btn-warning">Reset</button>
-        </form>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="alert alert-success" role="alert" *ngIf="showSuccessAlert">
+        Aircraft Added successfully
       </div>
-    </div>
-  </div>
-  
+      <form  class="was-validated" #aircraftForm="ngForm" (ngSubmit)="onSubmit(aircraftForm)">
+        <div class="mb-3" hidden>
+          <label for="aircraft_id" class="form-label">Aircraft ID</label>
+          <input type="number" class="form-control" id="aircraft_id" placeholder="Enter Aircraft ID"
+            [(ngModel)]="es.selectedAircraft.aircraft_id" name="aircraft_id">
+        </div>
+        <div class="mb-3">
+          <label for="make" class="form-label">Make</label>
+          <input type="text" class="form-control" id="make" placeholder="Enter Make"
+            [(ngModel)]="es.selectedAircraft.make" name="make" required minlength="3" maxlength="50">
+          <div *ngIf="aircraftForm.controls['make'].invalid && (aircraftForm.controls['make'].dirty || aircraftForm.controls['make'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="aircraftForm.controls['make'].errors?.['required']">Make is required.</div>
+            <div *ngIf="aircraftForm.controls['make'].errors?.['minlength']">Make must be at least 3 characters long.</div>
+            <div *ngIf="aircraftForm.controls['make'].errors?.['maxlength']">Make cannot exceed 50 characters.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="model" class="form-label">Model</label>
+          <input type="text" class="form-control" id="model" placeholder="Enter Model"
+            [(ngModel)]="es.selectedAircraft.model" name="model" required minlength="3" maxlength="50">
+          <div *ngIf="aircraftForm.controls['model'].invalid && (aircraftForm.controls['model'].dirty || aircraftForm.controls['model'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="aircraftForm.controls['model'].errors?.['required']">Model is required.</div>
+            <div *ngIf="aircraftForm.controls['model'].errors?.['minlength']">Model must be at least 3 characters long.</div>
+            <div *ngIf="aircraftForm.controls['model'].errors?.['maxlength']">Model cannot exceed 50 characters.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="capacity" class="form-label">Capacity</label>
+          <input type="number" class="form-control" id="capacity" placeholder="Enter capacity"
+            [(ngModel)]="es.selectedAircraft.capacity" name="capacity" required min="1" max="500">
+          <div *ngIf="aircraftForm.controls['capacity'].invalid && (aircraftForm.controls['capacity'].dirty || aircraftForm.controls['capacity'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="aircraftForm.controls['capacity'].errors?.['required']">Capacity is required.</div>
+            <div *ngIf="aircraftForm.controls['capacity'].errors?.['min']">Capacity must be at least 1.</div>
+            <div *ngIf="aircraftForm.controls['capacity'].errors?.['max']">Capacity cannot exceed 500.</div>
+          </div>
+        </div>
 
-<hr>
-<h2 class = 'text-center'>Aircraft Details</h2>
-<hr>
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <table class="table mt-4">
-          <thead>
-            <tr>
-              <th>Aircraft ID</th>
-              <th>MAKE</th>
-              <th>MODEL</th>
-              <th>CAPACITY</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let aircraft of es.aircrafts">
-              <td>{{ aircraft.aircraft_id }}</td>
-              <td>{{ aircraft.make }}</td>
-              <td>{{ aircraft.model }}</td>
-              <td>{{ aircraft.capacity }}</td>
-              <td><button class="btn btn-primary" (click)="updateAircraft(aircraft)">EDIT</button></td>
-              <td><button class="btn btn-danger" (click)="deleteAircraftById(aircraft.aircraft_id)">DELETE</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+      </form>
     </div>
   </div>
-  
+</div>
+<hr>
+<h2 class="text-center">Aircraft Details</h2>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <table class="table mt-4">
+        <thead>
+          <tr>
+        
+            <th>Make</th>
+            <th>Model</th>
+            <th>Capacity</th>
+            <th scope="colgroup">Action Buttons</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let aircraft of es.aircrafts">
+          
+            <td>{{ aircraft.make }}</td>
+            <td>{{ aircraft.model }}</td>
+            <td>{{ aircraft.capacity }}</td>
+            <td><input type="button" value="✏️" class="btn btn-outline-primary btn-sm" (click)="updateAircraft(aircraft)"></td>
+            <td><input type="button" value="❌" class="btn btn-outline-danger btn-sm" (click)="deleteAircraftById(aircraft.aircraft_id)"></td>
+          </tr>
+        </tbody>

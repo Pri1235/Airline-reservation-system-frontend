@@ -10,7 +10,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 })
 export class AircraftFormComponent implements OnInit {
 
-  
+  showSuccessAlert: boolean = false;
 
   constructor(public es: AircraftService,private cdr: ChangeDetectorRef) {
    }
@@ -21,14 +21,22 @@ export class AircraftFormComponent implements OnInit {
 
   onSubmit(form: NgForm)
   {
+   if(form.valid){
     console.log(form.value)
     this.es.postAircraft(form.value).subscribe((res)=>{
       console.log("Aircraft record inserted successfully....")
       form.reset();
       this.cdr.detectChanges();
       this.refreshAircrafts();
+      this.showSuccessAlert = true; 
+        setTimeout(() => {
+          this.showSuccessAlert = false; 
+        }, 2000);
 
     })
+   }else{
+    console.log("form is invalid")
+   }
   }
 
   refreshAircrafts()

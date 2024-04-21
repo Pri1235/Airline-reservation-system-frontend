@@ -1,42 +1,41 @@
-<div class="conatiner">
-   <h4>Search For flights here</h4>
-</div>
-<div class="container mt-3">
-    <form>
+<div class="container" *ngIf="showTripCards" id="trip-list">
+  <div class="container">
+    <h4 style="color: aliceblue;">Search For flights here ➡️</h4>
+  </div>
+  <div class="container mt-3">
+    <form #tripForm="ngForm" (ngSubmit)="searchFlights(tripForm)">
       <div class="row">
         <div class="col">
           <label for="from" class="sr-only">From</label>
-          <input type="text" class="form-control" id="from" placeholder="FROM: Mumbai (BOM)" aria-label="From">
+          <input type="text" class="form-control" id="from" placeholder="FROM: Mumbai (BOM)" aria-label="From" name="from" ngModel>
         </div>
         <div class="col">
           <label for="to" class="sr-only">To</label>
-          <input type="text" class="form-control" id="to" placeholder="TO: Pune (PNQ)" aria-label="To">
+          <input type="text" class="form-control" id="to" placeholder="TO: Pune (PNQ)" aria-label="To" name="to" ngModel>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col">
           <label for="date" class="sr-only">Date</label>
-          <input type="date" class="form-control" id="date" aria-label="Date">
+          <input type="date" class="form-control" id="date" aria-label="Date" name="date" ngModel>
         </div>
         <div class="col">
-          <label for="passengers" class="sr-only">No of Passengers</label>
-          <input type="number" class="form-control" id="passengers" placeholder="Number of passengers" aria-label="No of Passengers">
+          <label for="arrivalDateTime" class="sr-only">Arrival Date & Time</label>
+          <input type="datetime-local" class="form-control" id="arrivalDateTime" aria-label="Arrival Date & Time" name="arrivalDateTime" ngModel>
         </div>
       </div>
       <button type="submit" class="btn btn-primary mt-3">Search Flights</button>
     </form>
-  
-    
   </div>
-   <div class="card w-100" *ngFor="let trip of tripList">
-       <div class="card-body">
-           <h5 class="card-title">{{ trip.name }}</h5>
-           <p class="card-text">{{ trip.details }}</p>
-           <button (click)="showPassengerForm()" class="btn btn-primary">Proceed</button>
-       </div>
-   </div>
+  <div class="card w-100" *ngFor="let trip of tripList">
+    <div class="card-body">
+      <h5 class="card-title">{{ trip.name }}</h5>
+      <p class="card-text">{{ trip.details }}</p>
+      <button (click)="showPassengerForm()" class="btn btn-primary">Proceed</button>
+    </div>
+  </div>
 </div>
 
 <div class="container" *ngIf="showPassengerFormPage" id="trip-list">
-   <app-passenger-form></app-passenger-form>
+  <app-passenger-form></app-passenger-form>
 </div>

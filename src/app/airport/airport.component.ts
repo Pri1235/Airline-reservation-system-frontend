@@ -9,18 +9,26 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./airport.component.css']
 })
 export class AirportComponent implements OnInit {
-
+  showSuccessAlert: boolean = false;
   constructor(public es:AirportService) { }
 
   ngOnInit(): void {
     this.refreshAirports();
   }
   onSubmit(form:NgForm){
-  console.log(form.value)
-  this.es.postAirport(form.value).subscribe((res)=>{
-    this.refreshAirports();
-    form.reset()
-  })
+    if (form.valid) {
+      console.log(form.value);
+      this.es.postAirport(form.value).subscribe((res) => {
+        this.refreshAirports();
+        form.reset();
+        this.showSuccessAlert = true; // Show the success alert
+        setTimeout(() => {
+          this.showSuccessAlert = false; // Hide the alert after 5 seconds
+        }, 2000);
+      });
+    } else {
+      console.log("Form is invalid.");
+    }
 }
   refreshAirports(){
     this.es.getAllAirports().subscribe((res)=>{
@@ -30,6 +38,7 @@ export class AirportComponent implements OnInit {
   updateAirport(ap:Airport){
     console.log(ap)
     this.es.selectedAirport = ap
+   
   }
   deleteAirport(id:number){
     if(confirm("Do you really want to delete?")){

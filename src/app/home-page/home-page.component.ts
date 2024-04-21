@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   showAdminContent: boolean = false;
 
   showAdminPage(): void {
-    this.showAdminContent = true;
+    this.showAdminContent = !this.showAdminContent;
   }
 
 }

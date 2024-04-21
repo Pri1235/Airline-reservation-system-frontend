@@ -1,0 +1,36 @@
+<!-- <h3 class="text-center">Seat Configuration</h3>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form class="was-validated" #seatsForm="ngForm" (ngSubmit)="onSubmit(seatsForm)">
+        <div class="mb-3">
+          <label for="startSeatId" class="form-label">Start Seat ID</label>
+          <input type="number" class="form-control" id="startSeatId" [(ngModel)]="seatService.startSeatId" name="startSeatId" required>
+          <div *ngIf="seatsForm.controls['startSeatId'].invalid && (seatsForm.controls['startSeatId'].dirty || seatsForm.controls['startSeatId'].touched)"
+            class="alert alert-danger">
+            Start Seat ID is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="endSeatId" class="form-label">End Seat ID</label>
+          <input type="number" class="form-control" id="endSeatId" [(ngModel)]="seatService.endSeatId" name="endSeatId" required>
+          <div *ngIf="seatsForm.controls['endSeatId'].invalid && (seatsForm.controls['endSeatId'].dirty || seatsForm.controls['endSeatId'].touched)"
+            class="alert alert-danger">
+            End Seat ID is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="aircraftId" class="form-label">Aircraft ID</label>
+          <input type="number" class="form-control" id="aircraftId" [(ngModel)]="seatService.aircraftId" name="aircraftId" required>
+          <div *ngIf="seatsForm.controls['aircraftId'].invalid && (seatsForm.controls['aircraftId'].dirty || seatsForm.controls['aircraftId'].touched)"
+            class="alert alert-danger">
+            Aircraft ID is required.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Configure Seats</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+      </form>
+    </div>
+  </div>
+</div> -->

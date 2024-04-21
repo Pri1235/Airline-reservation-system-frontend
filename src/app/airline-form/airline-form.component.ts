@@ -9,7 +9,7 @@ import { Airline } from '../shared/airline.model';
   styleUrls: ['./airline-form.component.css']
 })
 export class AirlineFormComponent implements OnInit {
-
+  showSuccessAlert: boolean = false;
   constructor(public es: AirlineService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
@@ -17,12 +17,20 @@ export class AirlineFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
+   if(form.valid){
     console.log(form.value)
     this.es.postAirline(form.value).subscribe((res)=>{
       console.log("Airline record inserted successfully....")
       form.reset();
       this.refreshAirlines();
+      this.showSuccessAlert = true; 
+      setTimeout(() => {
+        this.showSuccessAlert = false; 
+      }, 2000);
     })
+   }else{
+    console.log("form is invalid")
+   }
   }
 
   refreshAirlines()
